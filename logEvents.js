@@ -6,10 +6,14 @@ const fsPromises = require("fs").promises;
 const path = require("path");
 
 const logEvents = async (msg) => {
-  const data = `${format(new Date(), "yyyyMMdd\tHH:MM:SS")}`;
-  const logItem = `${data}\t${uuid()}\t${msg}`;
+  const dateTime = `${format(new Date(), "yyyyMMdd\tHH:MM:SS")}`;
+  const logItem = `${dateTime}\t${uuid()}\t${msg}\n`;
   console.log(logItem);
   try {
+    //if no logs directory exist
+    if (!fs.existsSync(path.join(__dirname, "logs"))) {
+      await fsPromises.mkdir(path.join(__dirname, "logs"));
+    }
     await fsPromises.appendFile(
       path.join(__dirname, "logs", "eventlogs.txt"),
       logItem
@@ -19,4 +23,4 @@ const logEvents = async (msg) => {
   }
 };
 
-console.log(uuid());
+module.exports = logEvents;
