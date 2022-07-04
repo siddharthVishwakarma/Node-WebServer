@@ -1,14 +1,39 @@
-const logEvents = require("./logEvents");
+const express = require("express");
+const path = require("path");
+const PORT = process.env.PORT || 3500;
 
-const EventEmitter = require("events");
+const app = express();
 
-class MyEmitter extends EventEmitter {}
+app.get("^/$|index(.html)?", (req, res) => {
+  //   res.sendFile("./views/index.html", { root: __dirname });
+  res.sendFile(path.join(__dirname, "views", "index.html"));
+});
 
-// initial Object
-const myEmitter = new MyEmitter();
+app.get("/new-page(.html)?", (req, res) => {
+  res.sendFile(path.join(__dirname, "views", "new-page.html"));
+});
 
-// add listner for log event
-myEmitter.on("log", (msg) => logEvents(msg));
+// showing err
+app.get("/old-page(.html)?", (req, res) => {
+  res.status(301).redirect("/new-page.html");
+});
 
-// Emit Event
-myEmitter.emit("log", "log emitted!");
+// Route Handelers
+app.get(
+  "/hello(.html)?",
+  (req, res, next) => {
+    console.log("attemt to load hello page");
+    next();
+  },
+  (req, res) => {
+    res.send("Hello World!");
+  }
+);
+
+app.get("/*", (req, res) => {
+  res.status(404).sendFile(path.join(__dirname, "views", "404.html"));
+});
+
+app.listen(PORT, () => {
+  console.log(`Server running on port: ${PORT}`);
+});
