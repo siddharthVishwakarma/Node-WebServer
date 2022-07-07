@@ -1,0 +1,11 @@
+20220707	17:07:12	52553ad6-78d0-4ecb-8aee-800accc171ed	GET	undefined	/new-page
+20220707	17:07:22	6b4b964d-fa67-45b0-b47c-42b2882775e3	GET	undefined	/css/style.css
+20220707	17:07:23	2435fcc9-37b9-4741-be3c-8752f71029ea	GET	undefined	/img/img.jpg
+20220707	17:07:37	bbaf178a-0b87-4064-8e16-0f1b494fa8c2	GET	undefined	/new-page
+20220707	17:07:48	1ec79018-ae7d-4401-87bc-9710f51dff0a	GET	undefined	/css/style.css
+20220707	17:07:50	3aef5c67-bbe8-4618-95b2-3b99d5c3cdaa	GET	undefined	/img/img.jpg
+20220707	17:07:82	60c611f8-cf89-4dd7-aad0-b2acf32449ea	GET	undefined	/
+20220707	17:07:46	75cdb606-663a-4bca-90d7-e6edfc8704bd	GET	undefined	/
+20220707	17:07:20	60dbe238-baa3-4c32-8817-c34f17cd06e9	GET	undefined	/
+20220707	17:07:61	e804359c-c037-42c5-b32d-2074eea11f8a	GET	https://www.youtube.com	/
+20220707	17:07:17	ed848811-ebb6-45bf-8791-5e4068424e49	GET	https://www.youtube.com	/
