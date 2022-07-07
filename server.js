@@ -4,6 +4,17 @@ const PORT = process.env.PORT || 3500;
 
 const app = express();
 
+// built-in middlewars to handel url-encoded data
+//for ex: form data
+app.use(express.urlencoded({ extended: false }));
+
+// built in middleware for json
+app.use(express.json());
+
+// Serve static files
+// for ex: css
+app.use(express.static(path.join(__dirname, "/public")));
+
 app.get("^/$|index(.html)?", (req, res) => {
   //   res.sendFile("./views/index.html", { root: __dirname });
   res.sendFile(path.join(__dirname, "views", "index.html"));
