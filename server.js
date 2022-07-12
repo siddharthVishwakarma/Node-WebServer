@@ -36,35 +36,14 @@ app.use(express.urlencoded({ extended: false }));
 // built in middleware for json
 app.use(express.json());
 
-// Serve static files
-// for ex: css
+// Serve static files ex: css
 app.use(express.static(path.join(__dirname, "/public")));
+app.use("/subdir", express.static(path.join(__dirname, "/public")));
 
-app.get("^/$|index(.html)?", (req, res) => {
-  //   res.sendFile("./views/index.html", { root: __dirname });
-  res.sendFile(path.join(__dirname, "views", "index.html"));
-});
-
-app.get("/new-page(.html)?", (req, res) => {
-  res.sendFile(path.join(__dirname, "views", "new-page.html"));
-});
-
-// showing err
-app.get("/old-page(.html)?", (req, res) => {
-  res.status(301).redirect("/new-page.html");
-});
-
-// Route Handelers
-app.get(
-  "/hello(.html)?",
-  (req, res, next) => {
-    console.log("attemt to load hello page");
-    next();
-  },
-  (req, res) => {
-    res.send("Hello World!");
-  }
-);
+// Routes
+app.use("/", require("./routes/root"));
+app.use("/subdir", require("./routes/subdir"));
+app.use("/subdir", require("./routes/subdir"));
 
 app.all("*", (req, res) => {
   res.status(404);
